@@ -31,18 +31,10 @@ return {
       })
 
       -- 🔹 Debugging UI Auto Open/Close
-      dap.listeners.before.attach.dapui_config = function()
-        dapui.open()
-      end
-      dap.listeners.before.launch.dapui_config = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated.dapui_config = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited.dapui_config = function()
-        dapui.close()
-      end
+      dap.listeners.before.attach.dapui_config = function() dapui.open() end
+      dap.listeners.before.launch.dapui_config = function() dapui.open() end
+      dap.listeners.before.event_terminated.dapui_config = function() dapui.close() end
+      dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
 
       -- 🔹 Python Setup
       require("dap-python").setup("~/.virtualenvs/debugpy/bin/python")
@@ -103,9 +95,7 @@ return {
       vim.keymap.set("n", "<leader>do", dap.step_out, { desc = "Step Out" })
       vim.keymap.set("n", "<leader>dr", dap.restart, { desc = "Restart Debugging" })
       vim.keymap.set("n", "<leader>dq", dap.terminate, { desc = "Stop Debugging" })
-      vim.keymap.set("n", "<leader>de", function()
-        dapui.eval(nil, { enter = true })
-      end, { desc = "Evaluate Variable" })
+      vim.keymap.set("n", "<leader>de", function() dapui.eval(nil, { enter = true }) end, { desc = "Evaluate Variable" })
     end,
   },
 }

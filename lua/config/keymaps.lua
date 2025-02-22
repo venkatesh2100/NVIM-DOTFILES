@@ -14,13 +14,30 @@ keymap.set("n", "<C-s>", "<Esc>:w<CR>a")
 keymap.set("n", "<C-w>", ":bd<CR>")
 keymap.set("n", "<C-a>", "gg<S-v>G")
 --keymap.set("n", "<C-e>", "$", opts)
--- HACK: TODO Commets Shortcuts
-keymap.set("n", "<leader>tt", ":TodoTelescope<CR>", { desc = "Search TODOs" })
-keymap.set("n", "<leader>tq", ":TodoQuickFix<CR>", { desc = "Quickfix TODOs" })
+
+
+--
+vim.keymap.set("n", "<leader>t", function()
+  require("telescope").extensions.file_browser.file_browser({
+    path = "%:p:h", -- Open in the parent directory of the current file
+    select_buffer = true, -- Keep buffer selection consistent
+  })
+end, { desc = "Open Telescope File Browser" })
+-- Ensure `<leader>t` opens Neo-Tree
+vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "Toggle Neo-Tree" })
+
+
+-- 📌 Show TODOs in Quickfix only for the current directory
+
+-- vim.keymap.set("n", "<leader>;t", function()
+--   require("todo-comments.telescope").search_todos({
+--     cwd = vim.fn.expand("%:p:h"), -- ✅ Search only in the current directory
+--   })
+-- end, { desc = "Quickfix TODOs in Current Directory" })
 -- Map <leader>j to compile and run the current Java file
 keymap.set("n", "<leader>j", ":w<CR>:!javac % && java %:r<CR>", { noremap = true, silent = true })
 -- Map <leader>r to run the current Python file
-keymap.set("n", "<leader>r", ":w<CR>:sp | term python3 %:p<CR>", { noremap = true, silent = true })
+keymap.set("n", "<leader>cp", ":w<CR>:sp | term python3 %:p<CR>", { noremap = true, silent = true })
 -- Map Alt+number keys to switch to the respective buffer
 
 keymap.set("n", "<A-1>", ":BufferLineGoToBuffer 1<CR>", { noremap = true, silent = true })

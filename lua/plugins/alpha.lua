@@ -3,7 +3,6 @@ return {
 
   dependencies = {
     "nvim-tree/nvim-web-devicons",
-
     "nvimdev/dashboard-nvim",
   },
 

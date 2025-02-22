@@ -35,11 +35,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 -- NeoTree
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    vim.cmd("Neotree") -- Open Neotree file explorer on startup
-  end,
-})
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   callback = function()
+--     vim.cmd("Neotree") -- Open Neotree file explorer on startup
+--   end,
+-- })
 -- The default conceallevel is 3 in LazyVim
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "json", "jsonc", "markdown" },

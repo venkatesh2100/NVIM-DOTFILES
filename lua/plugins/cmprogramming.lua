@@ -3,7 +3,7 @@ return {
     "A7lavinraj/assistant.nvim",
     dependencies = { "stevearc/dressing.nvim" }, -- UI enhancements for prompts
     keys = {
-      { "<leader>a", "<cmd>AssistantToggle<cr>", desc = "Toggle Assistant.nvim window" },
+      { "<leader>a", "<cmd>AssistantToggle<cr>", desc = "Toggle Assistant window" },
     },
     opts = {
       commands = {
